@@ -1,0 +1,12 @@
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\bin\Debug\ChomskyLogic.exe.config
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\bin\Debug\ChomskyLogic.exe
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\bin\Debug\ChomskyLogic.pdb
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\obj\Debug\ChomskyLogic.csprojAssemblyReference.cache
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\obj\Debug\ChomskyLogic.Properties.Resources.resources
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\obj\Debug\ChomskyLogic.csproj.GenerateResource.cache
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\obj\Debug\ChomskyLogic.csproj.CoreCompileInputs.cache
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\obj\Debug\ChomskyLogic.exe
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\obj\Debug\ChomskyLogic.pdb
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\obj\Debug\ChomskyLogic.EntradaDatos.resources
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\obj\Debug\ChomskyLogic.Login.resources
+C:\Users\JOSE2\OneDrive\Documentos\LaboAPO\Chomsky\ChomskyLogic\ChomskyLogic\obj\Debug\ChomskyLogic.Desarrollo.resources
