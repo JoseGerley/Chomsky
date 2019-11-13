@@ -9,11 +9,13 @@ namespace ChomskyLogic.model
     public class Terminable : IAlgoritmo
     {
         public String newGrammar;
+        public Gramatica resultanting;
 
         public Terminable(Gramatica g)
         {
             Gramatica g2 = (Gramatica)g.Clone();
             methodPrincipal(g2);
+            resultanting = g2;
             newGrammar = defineString(g2);
         }
 
@@ -91,12 +93,17 @@ namespace ChomskyLogic.model
         private void deleteProductionNoTerminal(Gramatica g, ICollection<Elemento> allTerm)
         {
             ICollection<IProduccion> prod = g.productions;
-            foreach (IProduccion p in prod)
+            IList<int> pos = new List<int>();
+            for(int i = 0; i<prod.Count(); i++)
             {
-                if (!allTerm.Contains(p.getPrincipalVariable()) )
+                if (!allTerm.Contains(prod.ElementAt(i).getPrincipalVariable()) )
                 {
-                    g.deleteProduction(p);
+                    pos.Add(i);
                 }
+            }
+            for (int i = 0; i < pos.Count(); i++)
+            {
+                g.deleteProduction(prod.ElementAt(pos.ElementAt(i)));
             }
         }
 
@@ -187,6 +194,11 @@ namespace ChomskyLogic.model
         public string description()
         {
             return "Delete non Terminables";
+        }
+
+        public Gramatica resultantingGrammar()
+        {
+            return resultanting;
         }
     }
 }

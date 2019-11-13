@@ -23,6 +23,12 @@ namespace ChomskyLogic.model
         {
             return productions.ElementAt(0);
         }
+
+        public IProduccion GetProduccion(Elemento e)
+        {
+            IProduccion p = productions.Where(x => x.getPrincipalVariable().Equals(e)).First();
+            return p;
+        }
         
         public void determineElements(IList<char> variables, IList<char> terminals)
         {

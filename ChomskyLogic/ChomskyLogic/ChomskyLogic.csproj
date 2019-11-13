@@ -71,6 +71,7 @@
     <Compile Include="model\IProduccion.cs" />
     <Compile Include="model\Produccion.cs" />
     <Compile Include="model\ProduccionUnica.cs" />
+    <Compile Include="model\Reachable.cs" />
     <Compile Include="model\Terminable.cs" />
     <Compile Include="model\Terminal.cs" />
     <Compile Include="model\Variable.cs" />

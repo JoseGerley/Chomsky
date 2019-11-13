@@ -12,6 +12,7 @@ namespace ChomskyLogic.model
         public String actualGrammar;
         public String nextGrammar { get; private set; }
         private IAlgoritmo[] algorithms;
+        private int step;
 
         public Chomsky(String s)
         {
@@ -20,7 +21,9 @@ namespace ChomskyLogic.model
             actualGrammar = "G: \n"+grammar.toString();
             nextGrammar = "G': \n";
             algorithms = new IAlgoritmo[5];
+            step = 1;
             algorithms[0] = new Terminable(grammar);
+            algorithms[1] = new Reachable(algorithms[0].resultantingGrammar());
             nextGrammar += algorithms[0].grammar(); 
         }
 
@@ -39,9 +42,12 @@ namespace ChomskyLogic.model
             return listVar;
         }
 
-        public void applyAlgorithm(int step)
+        public void applyAlgorithm()
         {
-            //algorithms[step]
+            actualGrammar = nextGrammar;
+            nextGrammar = algorithms[step].grammar();
+            Console.WriteLine(nextGrammar);
+            step++;
         }
 
         private IList<char> convertStringToTerminals(String s, IList<char> var)

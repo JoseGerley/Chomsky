@@ -75,7 +75,9 @@ namespace ChomskyLogic
 
         private void Next_Click(object sender, EventArgs e)
         {
-
+            datosI.getModel().applyAlgorithm();
+            BTxt1Prev.Text = datosI.getModel().actualGrammar;
+            BTxt2Next.Text = datosI.getModel().nextGrammar;
         }
     }
 }

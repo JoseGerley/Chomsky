@@ -8,9 +8,12 @@ namespace ChomskyLogic.model
 {
     public interface IAlgoritmo
     {
+
+
         String grammar();
         void methodPrincipal(Gramatica g);
         String defineString(Gramatica g);
         String description();
+        Gramatica resultantingGrammar();
     }
 }
