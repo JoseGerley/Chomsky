@@ -11,14 +11,17 @@ namespace ChomskyLogic.model
         public Gramatica grammar;
         public String actualGrammar;
         public String nextGrammar { get; private set; }
-        
+        private IAlgoritmo[] algorithms;
+
         public Chomsky(String s)
         {
             grammar = new Gramatica();
             InstanceGrammar(s);
             actualGrammar = "G: \n"+grammar.toString();
             nextGrammar = "G': \n";
-
+            algorithms = new IAlgoritmo[5];
+            algorithms[0] = new Terminable(grammar);
+            nextGrammar += algorithms[0].grammar(); 
         }
 
         private IList<char> convertStringToVariables(String s)
@@ -34,6 +37,11 @@ namespace ChomskyLogic.model
             }
 
             return listVar;
+        }
+
+        public void applyAlgorithm(int step)
+        {
+            //algorithms[step]
         }
 
         private IList<char> convertStringToTerminals(String s, IList<char> var)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
-    public class Gramatica
+    public class Gramatica : ICloneable
     {
         private ICollection<Elemento> variables {  get; set; }
         private ICollection<Elemento> terminals {  get; set; }
@@ -23,7 +23,7 @@ namespace ChomskyLogic.model
         {
             return productions.ElementAt(0);
         }
-
+        
         public void determineElements(IList<char> variables, IList<char> terminals)
         {
             //ICollection<char> introduce = new LinkedList<char>();
@@ -73,6 +73,16 @@ namespace ChomskyLogic.model
             Elemento aux;
             aux = variables.Where(x => x.id == t).FirstOrDefault();
             return aux;
+        }
+
+        public void deleteProduction(IProduccion prod)
+        {
+            productions.Remove(prod);
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }

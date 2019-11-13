@@ -24,6 +24,11 @@ namespace ChomskyLogic.model
             productions.Add(aux);
         }
 
+        public void deleteUniqueProductio(ProduccionUnica p)
+        {
+            productions.Remove(p);
+        }
+
         public Elemento getPrincipalVariable()
         {
             return element;

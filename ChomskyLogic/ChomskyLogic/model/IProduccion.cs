@@ -16,5 +16,6 @@ namespace ChomskyLogic.model
         void updateProduction(ICollection<ProduccionUnica> fixedProduction, int pos);
         void updateElements(int pos, ICollection<Elemento> elementos);
         String toString();
+        void deleteUniqueProductio(ProduccionUnica p);
     }
 }
