@@ -66,11 +66,11 @@ namespace ChomskyLogic
             String msj = "Nota (Por cada linea): \n" +
                 "1. Primero introduzca la Variable \n" +
                 "2. Separe las Variable de las producciones atraves de '>' \n" +
-                "3. Separe cada subproduccion por medio de un '|' \n" +
+                "3. Separe cada subproduccion por medio de un '_' \n" +
                 "4. Utilice una linea por cada produccion \n" +
-                "5. La primera produccion se considerara como la inicial \n" +
+                "5. La primera produccion, deberá ser 'S' \n" +
                 "6. Identifique el simbolo lamda como # \n" +
-                "7. Por ejemplo S>abS|bAb|BBA|#";
+                "7. Por ejemplo S>AB_aBC_SBS";
             return msj;
         }
 
