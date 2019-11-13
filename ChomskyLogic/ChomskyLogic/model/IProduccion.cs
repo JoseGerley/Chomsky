@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
-    public interface IProduccion
+    public interface IProduccion : ICloneable
     {
         void setVariable(Elemento v);
         ProduccionUnica getProduction(int pos);
@@ -17,5 +17,6 @@ namespace ChomskyLogic.model
         void updateElements(int pos, ICollection<Elemento> elementos);
         String toString();
         void deleteUniqueProductio(ProduccionUnica p);
+        
     }
 }

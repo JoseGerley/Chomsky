@@ -24,6 +24,11 @@ namespace ChomskyLogic.model
             productions.Add(aux);
         }
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
         public void deleteUniqueProductio(ProduccionUnica p)
         {
             productions.Remove(p);

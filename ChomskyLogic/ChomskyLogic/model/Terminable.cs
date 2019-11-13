@@ -27,6 +27,7 @@ namespace ChomskyLogic.model
         public void methodPrincipal(Gramatica g)
         {
             ICollection<Elemento> first = findFirstTerm(g);
+            
             /*
             Console.WriteLine("---------------------TERMINABLES INICIO-------------------------");
             foreach (Elemento e in first)
@@ -35,6 +36,7 @@ namespace ChomskyLogic.model
             }
             */
             ICollection<Elemento> allTerm = this.allTerm(g, first);
+            
             /*
             Console.WriteLine("---------------------TERMINABLES-------------------------");
             foreach (Elemento e in allTerm)
@@ -48,7 +50,7 @@ namespace ChomskyLogic.model
         }
 
         private ICollection<Elemento> varAndTerm(Gramatica g, ICollection<Elemento> var) {
-            ICollection<Elemento> terms = g.getTerminals();
+            ICollection<Elemento> terms = this.cloneCollEl(g.getTerminals());
 
             foreach (Elemento e in var)
             {
@@ -110,7 +112,7 @@ namespace ChomskyLogic.model
         private ICollection<Elemento> allTerm(Gramatica g, ICollection<Elemento> first)
         {
             ICollection<Elemento> allTerm = first;
-            ICollection<Elemento> terms = g.getTerminals();
+            ICollection<Elemento> terms = this.cloneCollEl(g.getTerminals());
 
             foreach (Elemento e in first)
             {
@@ -154,10 +156,20 @@ namespace ChomskyLogic.model
             return allTerm;
         }
 
+        private ICollection<Elemento> cloneCollEl(ICollection<Elemento> t)
+        {
+            ICollection<Elemento> terms = new LinkedList<Elemento>();
+            foreach(Elemento e in t)
+            {
+                terms.Add(e);
+            }
+            return terms;
+        }
+
         private ICollection<Elemento> findFirstTerm(Gramatica g)
         {
             ICollection<Elemento> first = new LinkedList<Elemento>();
-            ICollection<Elemento> terms = g.getTerminals();
+            ICollection<Elemento> terms = this.cloneCollEl(g.getTerminals());
             for (int i=0; i < g.productions.Count(); i++)
             {
                 bool on = false;

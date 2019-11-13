@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
-    public class ProduccionUnica
+    public class ProduccionUnica : ICloneable
     {
         public ICollection<Elemento> elements { get; set; }
 
@@ -22,6 +22,11 @@ namespace ChomskyLogic.model
                 aux += e.id;
             }
             return aux;
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }

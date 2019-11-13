@@ -64,6 +64,7 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\Anulable.cs" />
     <Compile Include="model\IAlgoritmo.cs" />
     <Compile Include="model\Chomsky.cs" />
     <Compile Include="model\Elemento.cs" />
