@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
+
+   ///<summary>
+    ///The Grammar class is responsible for shaping the logic of what is one of these.
+    ///Handles the content of a grammar: Variables, terminals, productions.
+    ///</summary>
     public class Gramatica : ICloneable
     {
         private ICollection<Elemento> variables {  get; set; }
         private ICollection<Elemento> terminals {  get; set; }
         public ICollection<IProduccion> productions { get; }
+        ///<summary>
+        ///CONSTRUCTOR
+        ///</summary>
 
         public Gramatica()
         {
@@ -18,11 +26,17 @@ namespace ChomskyLogic.model
             terminals = new LinkedList<Elemento>();
             productions = new LinkedList<IProduccion>();
         }
-
+        /// <summary>
+        /// This method is responsible for obtaining the first production of grammar
+        /// </summary>
+        /// <returns>
+        /// IProduccion type of productions
+        /// </returns>
         public IProduccion firstProduction()
         {
             return productions.ElementAt(0);
         }
+
 
         public IProduccion GetProduccion(Elemento e)
         {
