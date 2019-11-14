@@ -39,6 +39,8 @@ namespace ChomskyLogic.model
             algorithms[2] = new Anulable(algorithms[1].resultantingGrammar());
 
             algorithms[3] = new Units(algorithms[2].resultantingGrammar());
+
+            algorithms[4] = new Result(algorithms[3].resultantingGrammar());
             nextGrammar += algorithms[0].grammar(); 
         }
 
@@ -65,17 +67,21 @@ namespace ChomskyLogic.model
 
             return listVar;
         }
+        
         /// <summary>
         /// This method is responsible for applying the corresponding algorithm depending on the grammar and the current step
         /// </summary>
-
-
         public void applyAlgorithm()
         {
-            actualGrammar = nextGrammar;
-            nextGrammar = algorithms[step].grammar();
-            //Console.WriteLine(nextGrammar);
-            step++;
+            if (step < 5)
+            {
+                actualGrammar = "G: \n"+ algorithms[step-1].grammar();
+                nextGrammar = "G': \n"+algorithms[step].grammar();
+                //Console.WriteLine(nextGrammar);
+
+                step++;
+            }
+           
         }
 
         /// <summary>
@@ -87,7 +93,6 @@ namespace ChomskyLogic.model
         /// <param name="var">
         /// IList type var
         /// </param>
-
         /// <returns>
         /// IList type listvar
         /// </returns>
@@ -146,7 +151,6 @@ namespace ChomskyLogic.model
         /// <param name="var">
         /// IList type var
         /// </param>
-
         /// <returns>
         /// IList type listvar
         /// </returns>
@@ -218,7 +222,6 @@ namespace ChomskyLogic.model
         /// <returns>
         /// string type aux
         /// </returns>
-
         private String variablesGrammar()
         {
             //Console.WriteLine("In Variables");

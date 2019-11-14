@@ -93,6 +93,16 @@ namespace ChomskyLogic.model
             }
             return aux;
         }
+
+        public void addProduction(IProduccion pro)
+        {
+            productions.Add(pro);
+        }
+
+        public void addElementVariable(Elemento e)
+        {
+            variables.Add(e);
+        }
         /// <summary>
         /// This method is responsible for providing the terminals
         /// </summary>

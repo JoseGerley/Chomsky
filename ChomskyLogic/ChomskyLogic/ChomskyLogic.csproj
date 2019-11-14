@@ -73,6 +73,7 @@
     <Compile Include="model\Produccion.cs" />
     <Compile Include="model\ProduccionUnica.cs" />
     <Compile Include="model\Reachable.cs" />
+    <Compile Include="model\Result.cs" />
     <Compile Include="model\Terminable.cs" />
     <Compile Include="model\Terminal.cs" />
     <Compile Include="model\Units.cs" />
