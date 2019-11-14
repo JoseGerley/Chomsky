@@ -14,7 +14,9 @@ namespace ChomskyLogic.model
     {
         public String newGrammar;
         public Gramatica resultanting;
-
+        ///<summary>
+        ///CONSTRUCTOR
+        ///</summary>
         public Terminable(Gramatica g)
         {
             Gramatica g2 = (Gramatica)g.Clone();
@@ -22,9 +24,14 @@ namespace ChomskyLogic.model
             resultanting = g2;
             newGrammar = defineString(g2);
         }
+
         ///<summary>
-        ///CONSTRUCTOR
+        ///This method is responsible for creating a new grammar
+        ///<returns>
+        ///string type of newGrammar
+        /// </returns>
         ///</summary>
+
         public string grammar()
         {
             return newGrammar;
