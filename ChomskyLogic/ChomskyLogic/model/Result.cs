@@ -57,7 +57,7 @@ namespace ChomskyLogic.model
 
         public void methodPrincipal(Gramatica g)
         {
-            char min = 'U';
+            char min = 'T';
             IProduccion termvars;
             IDictionary<Elemento,IProduccion > dicTerms= new Dictionary<Elemento, IProduccion>();
             IDictionary<Elemento[], IProduccion> dicVar = new Dictionary<Elemento[], IProduccion>();
@@ -74,9 +74,20 @@ namespace ChomskyLogic.model
                     ter.Add(a);
                     termvars.addProductionUnique(ter);
                     g.addProduction(termvars);
-                    dicTerms.Add(e, termvars);
+                    dicTerms.Add(a, termvars);
                 }
             }
+            /**
+             for(int i = 0; i < dicTerms.Count(); i++)
+            {
+                Console.WriteLine("key: " + dicTerms.Keys.ElementAt(i).id + " pro: " + dicTerms.Values.ElementAt(i).getPrincipalVariable().id);
+            }
+
+            foreach(Elemento e in g.getTerminals())
+            {
+                Console.WriteLine("Terminal: " + e.id);
+            }
+            */
             for (int i = 0; i < g.productions.Count; i++)
             {
                 IProduccion prod = g.productions.ElementAt(i);
