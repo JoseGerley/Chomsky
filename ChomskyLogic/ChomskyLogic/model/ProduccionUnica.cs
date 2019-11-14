@@ -43,7 +43,7 @@ namespace ChomskyLogic.model
         /// </summary>
         /// <returns>
         /// object type object
-        /// </returns>
+        /// </returns>  
         public object Clone()
         {
             return this.MemberwiseClone();
