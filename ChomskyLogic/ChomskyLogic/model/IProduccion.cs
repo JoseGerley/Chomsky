@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
+    ///<summary>
+    ///This interface is responsible for owning the algorithms
+    ///that will depend on its use according to the production entered
+    ///</summary>
     public interface IProduccion : ICloneable
     {
         void setVariable(Elemento v);
