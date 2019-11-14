@@ -201,7 +201,18 @@ namespace ChomskyLogic.model
             }
             return aux;
         }
-
+        /// <summary>
+        /// This method is responsible for searching the contents of the variables for each production for the final result.
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="a">
+        /// Elemento type a
+        /// </param>
+        /// <returns>
+        /// Elemento type of a
+        /// </returns>
         private Elemento browseProductionVariable(Gramatica g, Elemento a)
         {
             
