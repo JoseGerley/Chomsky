@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
+    ///<summary>
+    ///The Terminables class is responsible for identifying and treating the rules of the 
+    ///the terminables and their special cases.
+    ///</summary>
     public class Terminable : IAlgoritmo
     {
         public String newGrammar;
         public Gramatica resultanting;
-
+        ///<summary>
+        ///CONSTRUCTOR
+        ///</summary>
         public Terminable(Gramatica g)
         {
             Gramatica g2 = (Gramatica)g.Clone();
@@ -19,11 +25,24 @@ namespace ChomskyLogic.model
             newGrammar = defineString(g2);
         }
 
+        ///<summary>
+        ///This method is responsible for creating a new grammar
+        ///<returns>
+        ///string type of newGrammar
+        /// </returns>
+        ///</summary>
+
         public string grammar()
         {
             return newGrammar;
         }
 
+        /// <summary>
+        /// This method is responsible for performing the step corresponding to the unit step.
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
         public void methodPrincipal(Gramatica g)
         {
             ICollection<Elemento> first = findFirstTerm(g);
@@ -49,6 +68,18 @@ namespace ChomskyLogic.model
             
         }
 
+        /// <summary>
+        /// This method is responsible for performing the step corresponding to the unit step.
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="var">
+        /// ICollection type var
+        /// </param>
+        /// <returns>
+        /// ICollection type terms
+        /// </returns>
         private ICollection<Elemento> varAndTerm(Gramatica g, ICollection<Elemento> var) {
             ICollection<Elemento> terms = this.cloneCollEl(g.getTerminals());
 
@@ -59,7 +90,15 @@ namespace ChomskyLogic.model
 
             return terms;
         }
-
+        /// <summary>
+        /// This method is responsible for eliminating a unique production according to the grammar entered by parameters
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="allTerm">
+        /// ICollection type allTerm
+        /// </param>
         private void deleteUniqueProduction(Gramatica g, ICollection<Elemento> allTerm)
         {
             ICollection<IProduccion> prod = g.productions;
@@ -92,6 +131,16 @@ namespace ChomskyLogic.model
             }
         }
 
+        /// <summary>
+        /// This method is responsible for eliminating a unique no terminal production according to the grammar entered by parameters
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="allTerm">
+        /// ICollection type allTerm
+        /// </param>
+
         private void deleteProductionNoTerminal(Gramatica g, ICollection<Elemento> allTerm)
         {
             ICollection<IProduccion> prod = g.productions;
@@ -109,6 +158,19 @@ namespace ChomskyLogic.model
             }
         }
 
+
+        /// <summary>
+        /// This method is responsible for verifying all the terms belonging to the bodies of the productions
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="first">
+        /// ICollection type first
+        /// </param>
+        /// <returns>
+        /// ICollection type allTerm
+        /// </returns>
         private ICollection<Elemento> allTerm(Gramatica g, ICollection<Elemento> first)
         {
             ICollection<Elemento> allTerm = first;
@@ -156,6 +218,15 @@ namespace ChomskyLogic.model
             return allTerm;
         }
 
+        /// <summary>
+        /// This method is responsible for cloning an element.
+        /// </summary>
+        /// <param name="t">
+        /// ICollection type t
+        /// </param>
+        /// <returns>
+        /// ICollection type terms
+        /// </returns>
         private ICollection<Elemento> cloneCollEl(ICollection<Elemento> t)
         {
             ICollection<Elemento> terms = new LinkedList<Elemento>();
@@ -166,6 +237,15 @@ namespace ChomskyLogic.model
             return terms;
         }
 
+        /// <summary>
+        /// This method is responsible for finding the first term belonging to the grammar entered by parameters
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <returns>
+        /// ICollection type first
+        /// </returns>
         private ICollection<Elemento> findFirstTerm(Gramatica g)
         {
             ICollection<Elemento> first = new LinkedList<Elemento>();
@@ -197,17 +277,36 @@ namespace ChomskyLogic.model
             }
             return first;
         }
-
+        /// <summary>
+        /// This method is responsible for exposing the terminables and a string with its description
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <returns>
+        /// string type description
+        /// </returns>
         public string defineString(Gramatica g)
         {
             return this.description()+" \n"+g.toString();
         }
 
+        /// <summary>
+        /// This method is responsible for exposing the description message
+        /// </summary>
+        /// <returns>
+        /// string type description message
+        /// </returns>
         public string description()
         {
             return "Delete non Terminables";
         }
-
+        /// <summary>
+        /// This method is responsible for bringing the resultanting grammar
+        /// </summary>
+        /// <returns>
+        /// Gramatica type resultanting
+        /// </returns>
         public Gramatica resultantingGrammar()
         {
             return resultanting;

@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
+
+    ///<summary>
+    ///The Units class is responsible for identifying and treating the rules of the 
+    ///the units and their special cases.
+    ///</summary>
     public class Units : IAlgoritmo
     {
         public String newGrammar;
         public Gramatica resultanting;
 
+        ///<summary>
+        ///CONSTRUCTOR
+        ///</summary>
         public Units(Gramatica g)
         {
             Gramatica g2 = (Gramatica)g.Clone();
@@ -18,26 +26,58 @@ namespace ChomskyLogic.model
             resultanting = g2;
             newGrammar = defineString(g2);
         }
+
+        /// <summary>
+        /// This method is responsible for exposing the units string with its description
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <returns>
+        /// string type description
+        /// </returns>
         public string defineString(Gramatica g)
         {
             return this.description() + " \n" + g.toString();
         }
 
+        /// <summary>
+        /// This method is responsible for exposing the description message
+        /// </summary>
+        /// <returns>
+        /// string type description message
+        /// </returns>
         public string description()
         {
             return "Browse Units";
         }
-
+        /// <summary>
+        /// This method is responsible for bringing the resultanting grammar
+        /// </summary>
+        /// <returns>
+        /// Gramatica type resultanting
+        /// </returns>
         public Gramatica resultantingGrammar()
         {
             return resultanting;
         }
-
-
+        /// <summary>
+        /// This method is responsible for creating a new grammar
+        /// </summary>
+        /// <returns>
+        /// string type newGrammar
+        /// </returns>
         public string grammar()
         {
             return newGrammar;
         }
+
+        /// <summary>
+        /// This method is responsible for performing the step corresponding to the unit step.
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
 
         public void methodPrincipal(Gramatica g)
         {
@@ -62,7 +102,18 @@ namespace ChomskyLogic.model
                 max--;
             }
         }
-
+        /// <summary>
+        /// This method is responsible for adding a new unit to the grammar to convert
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="produccion">
+        /// IProduccion type produccion
+        /// </param>
+        /// <param name="units">
+        /// ICollection type units
+        /// </param>
         private void addOtherUnit(ICollection<Elemento> units, IProduccion produccion, Gramatica g)
         {
             foreach(Elemento u in units)
@@ -74,7 +125,12 @@ namespace ChomskyLogic.model
                 }
             }
         }
-
+        /// <summary>
+        /// This method is responsible for eliminating empty unit productions.
+        /// </summary>
+        /// <param name="pro">
+        /// IProduccion type produccion
+        /// </param>
         private void deleteEmpty(IProduccion pro)
         {
             ICollection<ProduccionUnica> li = new LinkedList<ProduccionUnica>();
@@ -89,7 +145,18 @@ namespace ChomskyLogic.model
             }
         }
 
-
+        /// <summary>
+        /// This method is responsible for providing the units of the productions
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="produccion">
+        /// IProduccion type produccion
+        /// </param>
+        /// <param name="units">
+        /// ICollection type units
+        /// </param>
         private void getUnitsOfProduction(ICollection<Elemento> units, IProduccion produccion,Gramatica g)
         {
            

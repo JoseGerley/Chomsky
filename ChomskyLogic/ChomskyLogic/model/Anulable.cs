@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
+    ///<summary>
+    ///The Anulable class is responsible for identifying and treating the rules of the 
+    ///the Anulable and their special cases.
+    ///</summary>
     public class Anulable : IAlgoritmo
     {
         public String newGrammar;
         public Gramatica resultanting;
 
+        ///<summary>
+        ///CONSTRUCTOR
+        ///</summary>
         public Anulable(Gramatica g)
         {
             Gramatica g2 = (Gramatica)g.Clone();
@@ -19,7 +26,12 @@ namespace ChomskyLogic.model
             newGrammar = defineString(g2);
         }
 
-
+        /// <summary>
+        /// This method is responsible for performing the step corresponding to the unit step.
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
         public void methodPrincipal(Gramatica g)
         {
             ICollection<Elemento> anul = new LinkedList<Elemento>();
@@ -33,7 +45,15 @@ namespace ChomskyLogic.model
             */
             applyAnul(g, anul);
         }
-
+        /// <summary>
+        /// This method is responsible for applying the rule to identify voidable variables.
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="anul">
+        /// ICollection type anul
+        /// </param>
         private void applyAnul(Gramatica g, ICollection<Elemento> anul)
         {
             Elemento lamda = anul.ElementAt(0);
@@ -66,7 +86,13 @@ namespace ChomskyLogic.model
                 deleteEmpty(pro);
             }
         }
-           
+
+        /// <summary>
+        /// This method is responsible for eliminating the bodies of productions that contain voidable according to the production read.
+        /// </summary>
+        /// <param name="pro">
+        /// IProduccion type pro
+        /// </param>
 
         private void deleteEmpty(IProduccion pro)
         {
@@ -81,7 +107,15 @@ namespace ChomskyLogic.model
                 pro.deleteUniqueProductio(proU);
             }
         }
-
+        /// <summary>
+        /// This method is responsible for identifying an element that contains voidable according to the grammar.
+        /// </summary>
+        /// <param name="a">
+        /// Elemento type a
+        /// </param>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
         private void anularElemento( Elemento a, Gramatica g)
         {
 
@@ -113,7 +147,15 @@ namespace ChomskyLogic.model
             
             
         }
-
+        /// <summary>
+        /// This method is responsible for recognizing the first element containing lambda checking variables according to the grammar
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <returns>
+        /// Elemento type lambda
+        /// </returns>
         private Elemento initial(Gramatica g)
         {
             Elemento lamda = null;
@@ -128,7 +170,15 @@ namespace ChomskyLogic.model
             }
             return lamda;
         }
-
+        /// <summary>
+        /// This method is responsible for recognizing the first element containing lambda checking terminals according to the grammar
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <returns>
+        /// Elemento type lambda
+        /// </returns>
         private Elemento lamda(Gramatica g)
         {
             Elemento lamda = null;
@@ -143,7 +193,15 @@ namespace ChomskyLogic.model
             }
             return lamda;
         }
-
+        /// <summary>
+        /// This method is responsible for finding the nullable elements according to the grammar introduced
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="rea">
+        /// ICollection type rea
+        /// </param>
         private void findAnulables(Gramatica g, ICollection<Elemento> rea)
         {
            
@@ -167,7 +225,18 @@ namespace ChomskyLogic.model
             }
 
         }
-
+        /// <summary>
+        /// This method is responsible for verifying the addition of a voidable element according to the grammar introduced
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="rea">
+        /// ICollection type g
+        /// </param>
+        /// <returns>
+        /// bool type change
+        /// </returns>
         private bool addAnul(Gramatica g, ICollection<Elemento> rea)
         {
             bool change = false;
@@ -213,23 +282,46 @@ namespace ChomskyLogic.model
             return change;
         }
 
-
+        /// <summary>
+        /// This method is responsible for exposing the anulables and a string with its description
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <returns>
+        /// string type description
+        /// </returns>
         public string defineString(Gramatica g)
         {
             return this.description() + " \n" + g.toString();
         }
-
+        /// <summary>
+        /// This method is responsible for exposing the description message
+        /// </summary>
+        /// <returns>
+        /// string type description message
+        /// </returns>
         public string description()
         {
             return "Delete non Anulable";
         }
-
+        /// <summary>
+        /// This method is responsible for bringing the resultanting grammar
+        /// </summary>
+        /// <returns>
+        /// Gramatica type resultanting
+        /// </returns>
         public Gramatica resultantingGrammar()
         {
             return resultanting;
         }
 
-
+        ///<summary>
+        ///This method is responsible for creating a new grammar
+        ///<returns>
+        ///string type of newGrammar
+        /// </returns>
+        ///</summary>
         public string grammar()
         {
             return newGrammar;
