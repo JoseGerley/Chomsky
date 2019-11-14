@@ -49,7 +49,7 @@ namespace ChomskyLogic.model
         /// </returns>
         public string description()
         {
-            return "Browse Units";
+            return "Add a resulting productions";
         }
         /// <summary>
         /// This method is responsible for bringing the resultanting grammar
@@ -107,7 +107,7 @@ namespace ChomskyLogic.model
             char min = 'T';
             IProduccion termvars;
             IDictionary<Elemento,IProduccion > dicTerms= new Dictionary<Elemento, IProduccion>();
-            IDictionary<Elemento[], IProduccion> dicVar = new Dictionary<Elemento[], IProduccion>();
+            IDictionary<string, IProduccion> dicVar = new Dictionary<string, IProduccion>();
             Elemento lamda = this.lamda(g);
             foreach ( Elemento a in g.getTerminals())
             {
@@ -144,32 +144,48 @@ namespace ChomskyLogic.model
                     foreach (Elemento a in g.getTerminals())
                     {
                         if (!a.Equals(lamda) &&
-                            body.elements.Contains(a))
+                            body.elements.Contains(a)
+                            && !dicTerms[a].getPrincipalVariable().Equals(prod.getPrincipalVariable()))
                         {
-                            Console.WriteLine("Not found: "+a.id);
+                            //Console.WriteLine("Not found: "+a.id);
                             body.elements.Remove(a);
                             body.elements.Add(dicTerms[a].getPrincipalVariable());
                         }
                     }
-                    /**
+                    
                     for (int k = 0; k < body.elements.Count() - 1; k++)
                     {
-                        if (!binaryvars.ContainsKey(body[k].ToString() + body[k + 1].ToString()) && body.Length > 2)
+                        bool change = false;
+                        if (body.elements.Count > 2 && !dicVar.ContainsKey(""+body.elements.ElementAt(k).id + body.elements.ElementAt(k+1).id))
                         {
-                            binaryvars.Add(body[k].ToString() + body[k + 1].ToString(), (char)(Variables.Last() + 1));
-                            Variables.Add((char)(Variables.Last() + 1));
-                            Productions.Add(new Production(Variables.Last(), body[k].ToString() + body[k + 1].ToString()));
+                            Elemento e = new Variable(min);
+                            min++;
+                            IProduccion aux = new Produccion(e);
+                            ICollection<Elemento> value = new LinkedList<Elemento>();
+                            value.Add(body.elements.ElementAt(k));
+                            value.Add(body.elements.ElementAt(k + 1));
+                            aux.addProductionUnique(value);
+                            g.addProduction(aux);
+                            g.addElementVariable(e);
+                            dicVar.Add("" + body.elements.ElementAt(k).id + body.elements.ElementAt(k + 1).id, aux);
+                           
                         }
-                        if (body.Length > 2)
+                        if (body.elements.Count > 2)
                         {
-                            body = body.Replace(body[k].ToString() + body[k + 1].ToString(), binaryvars[body[k].ToString() + body[k + 1].ToString()] + "");
+                            change = true;
+                            char a = body.elements.ElementAt(k).id;
+                            char b = body.elements.ElementAt(k + 1).id;
+                            body.elements.Remove(body.elements.ElementAt(k)); 
+                            body.elements.Remove(body.elements.ElementAt(k + 1));
+                            body.elements.Add(dicVar["" + a+b].getPrincipalVariable());
                             k--;
                         }
-                        prod.Body[j] = body;
+                        if(change)
+                            prod.listProductionUnique().ElementAt(j).elements = body.elements;
                     }
-    */
                 }
             }
+
         }
 
         /// <summary>

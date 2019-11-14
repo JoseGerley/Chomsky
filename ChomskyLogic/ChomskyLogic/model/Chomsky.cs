@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
+    
 
     ///<summary>
     ///The chomsky class is in charge of business logic: 
