@@ -37,13 +37,31 @@ namespace ChomskyLogic.model
             return productions.ElementAt(0);
         }
 
-
+        /// <summary>
+        /// This method is responsible for obtaining a production of grammar
+        /// </summary>
+        /// <param name="e">
+        /// Elemento type e
+        /// </param>
+        /// <returns>
+        /// IProduccion type of productions
+        /// </returns>
         public IProduccion GetProduccion(Elemento e)
         {
             IProduccion p = productions.Where(x => x.getPrincipalVariable().Equals(e)).First();
             return p;
         }
-        
+        /// <summary>
+        /// This method is responsible for classifying the elements found in the 
+        /// grammar, either terminals or variables
+        /// </summary>
+        /// <param name="variables">
+        /// IList type variables
+        /// </param>
+        /// /// <param name="terminals">
+        /// IList type terminals
+        /// </param>
+
         public void determineElements(IList<char> variables, IList<char> terminals)
         {
             //ICollection<char> introduce = new LinkedList<char>();
@@ -59,6 +77,12 @@ namespace ChomskyLogic.model
 
         }
 
+        /// <summary>
+        /// This method is in charge of being used to convert to string to anyone who invokes it.
+        /// </summary>
+        /// <returns>
+        /// string type aux
+        /// </returns>
         public String toString()
         {
             String aux = "";
@@ -69,37 +93,74 @@ namespace ChomskyLogic.model
             }
             return aux;
         }
-
+        /// <summary>
+        /// This method is responsible for providing the terminals
+        /// </summary>
+        /// <returns>
+        /// ICollection type terminals
+        /// </returns>
         public ICollection<Elemento> getTerminals()
         {
             return terminals;
         }
-
+        /// <summary>
+        /// This method is responsible for providing the variables
+        /// </summary>
+        /// <returns>
+        /// ICollection type variables
+        /// </returns>
         public ICollection<Elemento> getVariables()
         {
             return variables;
         }
 
-
+        /// <summary>
+        /// This method is responsible for giving a specific terminal using a searched character.
+        /// </summary>
+        /// <param name="t">
+        /// char type t
+        /// </param>
+        /// <returns>
+        /// Elemento type aux
+        /// </returns>
         public Elemento getTerminalSpecifies(char t)
         {
             Elemento aux;
             aux = terminals.Where(x => x.id == t).FirstOrDefault();
             return aux;
         }
-
+        /// <summary>
+        /// This method is responsible for giving a specific variable using a searched character.
+        /// </summary>
+        /// <param name="t">
+        /// char type t
+        /// </param>
+        /// <returns>
+        /// Elemento type aux
+        /// </returns>
         public Elemento getVariableSpecifies(char t)
         {
             Elemento aux;
             aux = variables.Where(x => x.id == t).FirstOrDefault();
             return aux;
         }
+        /// <summary>
+        /// This method is responsible for eliminating a production according to the production entered by parameters
+        /// </summary>
+        /// <param name="prod">
+        /// IProduccion type prod
+        /// </param>
 
         public void deleteProduction(IProduccion prod)
         {
             productions.Remove(prod);
         }
-
+        /// <summary>
+        /// This method is responsible for cloning an item
+        /// </summary>
+        /// <returns>
+        /// object type object
+        /// </returns>
         public object Clone()
         {
             return this.MemberwiseClone();
