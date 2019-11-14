@@ -1,0 +1,14 @@
+S>AB_aBC_SBS
+A>aA_C
+B>bbB_b
+C>cC_#
+
+S>AB_aBC_SBS
+A>A
+B>bbB_b
+C>cC_#
+
+S>AB_aBA_SBS
+A>aA_a
+B>bbB_b
+C>cC_#

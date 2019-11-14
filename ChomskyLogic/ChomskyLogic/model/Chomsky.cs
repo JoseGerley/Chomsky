@@ -27,11 +27,7 @@ namespace ChomskyLogic.model
             algorithms[0] = new Terminable(grammar);
             
             algorithms[1] = new Reachable(algorithms[0].resultantingGrammar());
-            Console.WriteLine("---------Termianles---------");
-            foreach (Elemento e in algorithms[1].resultantingGrammar().getTerminals())
-            {
-                Console.WriteLine("term: " + e.id);
-            }
+            
             algorithms[2] = new Anulable(algorithms[1].resultantingGrammar());
             nextGrammar += algorithms[0].grammar(); 
         }
