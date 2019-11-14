@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ChomskyLogic.model
 {
 
-    //<summary>
+    ///<summary>
     ///The terminal class is responsible for identifying and treating
     ///the terminals and their special cases.
     ///</summary>
