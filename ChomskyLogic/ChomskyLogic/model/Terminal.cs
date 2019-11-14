@@ -8,7 +8,7 @@ namespace ChomskyLogic.model
 {
 
     ///<summary>
-    ///The terminal class is responsible for identifying and treating
+    ///The terminal class is responsible for identifying and treating the rules of the 
     ///the terminals and their special cases.
     ///</summary>
     public class Terminal : Elemento

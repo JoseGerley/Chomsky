@@ -8,7 +8,7 @@ namespace ChomskyLogic.model
 {
 
     ///<summary>
-    ///The Units class is responsible for identifying and treating
+    ///The Units class is responsible for identifying and treating the rules of the 
     ///the units and their special cases.
     ///</summary>
     public class Units : IAlgoritmo

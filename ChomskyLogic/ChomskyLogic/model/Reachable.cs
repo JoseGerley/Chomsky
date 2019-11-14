@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
+    ///<summary>
+    ///The Reachable class is responsible for identifying and treating the rules of the 
+    ///the Reachable and their special cases.
+    ///</summary>
+
     class Reachable : IAlgoritmo
     {
         public String newGrammar;
         public Gramatica resultanting;
+
+        ///<summary>
+        ///CONSTRUCTOR
+        ///</summary>
         public Reachable(Gramatica g)
         {
             Gramatica g2 = (Gramatica)g.Clone();
@@ -17,23 +26,46 @@ namespace ChomskyLogic.model
             resultanting = g2;
             newGrammar = defineString(g2);
         }
-
+        /// <summary>
+        /// This method is responsible for exposing the reachables and a string with its description
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <returns>
+        /// string type description
+        /// </returns>
         public string defineString(Gramatica g)
         {
             return this.description() + " \n" + g.toString();
         }
-
+        /// <summary>
+        /// This method is responsible for exposing the description message
+        /// </summary>
+        /// <returns>
+        /// string type description message
+        /// </returns>
         public string description()
         {
             return "Delete non Reachable";
         }
-
+        /// <summary>
+        /// This method is responsible for creating a new grammar
+        /// </summary>
+        /// <returns>
+        /// string type newGrammar
+        /// </returns>
 
         public string grammar()
         {
             return newGrammar;
         }
-
+        /// <summary>
+        /// This method is responsible for performing the step corresponding to the unit step.
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
         public void methodPrincipal(Gramatica g)
         {
             ICollection<Elemento> rea = findReachables(g);
@@ -46,7 +78,15 @@ namespace ChomskyLogic.model
             */
             deleteNonReacheble(rea, g);
         }
-
+        /// <summary>
+        /// This method is responsible for eliminating a non reachable according to the grammar entered by parameters
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="rea">
+        /// ICollection type rea
+        /// </param>
         private void deleteNonReacheble(ICollection<Elemento> rea, Gramatica g)
         {
             IList<int> pos = new List<int>();
@@ -62,7 +102,16 @@ namespace ChomskyLogic.model
                 g.deleteProduction(g.productions.ElementAt(pos.ElementAt(i)));
             }
         }
-
+        /// <summary>
+        /// This method is responsible for finding the reachables according to the grammar entered by parameters
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <returns>
+        /// ICollection type rea
+        /// </returns>
+   
         private ICollection<Elemento> findReachables(Gramatica g)
         {
             ICollection<Elemento> rea = new LinkedList<Elemento>();
@@ -77,6 +126,18 @@ namespace ChomskyLogic.model
 
             return rea;
         }
+        /// <summary>
+        /// This method is responsible for adding the reachables according to the grammar entered by parameters
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="b">
+        /// bool type b
+        /// </param>
+        /// <param name="rea">
+        /// ICollection type rea
+        /// </param>
 
         private void addReachables(Gramatica g, bool b, ICollection<Elemento> rea)
         {
@@ -98,7 +159,12 @@ namespace ChomskyLogic.model
                 }
             }
         }
-
+        /// <summary>
+        /// This method is responsible for bringing the resultanting grammar
+        /// </summary>
+        /// <returns>
+        /// Gramatica type resultanting
+        /// </returns>
         public Gramatica resultantingGrammar()
         {
             return resultanting;

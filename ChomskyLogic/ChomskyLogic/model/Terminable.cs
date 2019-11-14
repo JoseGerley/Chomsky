@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ChomskyLogic.model
 {
     ///<summary>
-    ///The Terminables class is responsible for identifying and treating
+    ///The Terminables class is responsible for identifying and treating the rules of the 
     ///the terminables and their special cases.
     ///</summary>
     public class Terminable : IAlgoritmo
@@ -271,7 +271,7 @@ namespace ChomskyLogic.model
             return first;
         }
         /// <summary>
-        /// This method is responsible for exposing the units string with its description
+        /// This method is responsible for exposing the terminables and a string with its description
         /// </summary>
         /// <param name="g">
         /// Gramatica type g
