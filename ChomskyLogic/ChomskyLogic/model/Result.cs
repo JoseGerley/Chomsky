@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
+
+    ///<summary>
+    ///The result class is responsible for taking charge of the last step in which binary character 
+    ///productions will be taken into account
+    ///</summary>
     public class Result : IAlgoritmo
     {
         public String newGrammar;
         public Gramatica resultanting;
+
+        ///<summary>
+        ///CONSTRUCTOR
+        ///</summary>
 
         public Result(Gramatica g)
         {
@@ -19,27 +28,60 @@ namespace ChomskyLogic.model
             newGrammar = defineString(g2);
         }
 
+        /// <summary>
+        /// This method is responsible for exposing the results and a string with its description
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <returns>
+        /// string type description
+        /// </returns>
         public string defineString(Gramatica g)
         {
             return this.description() + " \n" + g.toString();
         }
-
+        /// <summary>
+        /// This method is responsible for exposing the description message
+        /// </summary>
+        /// <returns>
+        /// string type description message
+        /// </returns>
         public string description()
         {
             return "Browse Units";
         }
-
+        /// <summary>
+        /// This method is responsible for bringing the resultanting grammar
+        /// </summary>
+        /// <returns>
+        /// Gramatica type resultanting
+        /// </returns>
         public Gramatica resultantingGrammar()
         {
             return resultanting;
         }
-
+        /// <summary>
+        /// This method is responsible for creating a new grammar
+        /// </summary>
+        /// <returns>
+        /// string type newGrammar
+        /// </returns>
 
         public string grammar()
         {
             return newGrammar;
         }
 
+        /// <summary>
+        /// This method is responsible for recognizing the first element containing lambda checking terminals according to the grammar
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <returns>
+        /// Elemento type lambda
+        /// </returns>
         private Elemento lamda(Gramatica g)
         {
             Elemento lamda = null;
@@ -54,7 +96,12 @@ namespace ChomskyLogic.model
             }
             return lamda;
         }
-
+        /// <summary>
+        /// This method is responsible for performing the step corresponding to the unit step.
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
         public void methodPrincipal(Gramatica g)
         {
             char min = 'U';
@@ -114,6 +161,21 @@ namespace ChomskyLogic.model
             }
         }
 
+        /// <summary>
+        /// This method is responsible for returning a new string in which all occurrences of a specified Unicode character with unique productions
+        /// </summary>
+        /// <param name="g">
+        /// Gramatica type g
+        /// </param>
+        /// <param name="body">
+        /// ProduccionUnica type body
+        /// </param>
+        /// <param name="a">
+        /// Elemento type a
+        /// </param>
+        /// <returns>
+        /// ProduccionUnica type of a
+        /// </returns>
         private ProduccionUnica Replace(ProduccionUnica body, Elemento a, Gramatica g)
         {
             ProduccionUnica aux = new ProduccionUnica();
