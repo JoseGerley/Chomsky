@@ -75,6 +75,7 @@
     <Compile Include="model\Reachable.cs" />
     <Compile Include="model\Terminable.cs" />
     <Compile Include="model\Terminal.cs" />
+    <Compile Include="model\Units.cs" />
     <Compile Include="model\Variable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

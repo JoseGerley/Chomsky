@@ -35,8 +35,10 @@ namespace ChomskyLogic.model
             algorithms[0] = new Terminable(grammar);
             
             algorithms[1] = new Reachable(algorithms[0].resultantingGrammar());
-            
+
             algorithms[2] = new Anulable(algorithms[1].resultantingGrammar());
+
+            algorithms[3] = new Units(algorithms[2].resultantingGrammar());
             nextGrammar += algorithms[0].grammar(); 
         }
 
