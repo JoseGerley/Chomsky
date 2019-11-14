@@ -28,7 +28,7 @@ namespace ChomskyLogic.model
         }
 
         /// <summary>
-        /// This method is responsible for exposing the units string with its description
+        /// This method is responsible for exposing the units string and a with its description
         /// </summary>
         /// <param name="g">
         /// Gramatica type g

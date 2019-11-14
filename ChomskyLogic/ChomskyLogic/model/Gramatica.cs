@@ -94,11 +94,23 @@ namespace ChomskyLogic.model
             return aux;
         }
 
+        /// <summary>
+        /// This method is responsible for adding a  production using the incoming elements per parameter.
+        /// </summary>
+        /// <param name="pro">
+        /// IProduccion type pro
+        /// </param>
+
         public void addProduction(IProduccion pro)
         {
             productions.Add(pro);
         }
-
+        /// <summary>
+        /// This method is responsible for adding an elements of variables, using the incoming elements per parameter.
+        /// </summary>
+        /// <param name="e">
+        /// Elemento type e
+        /// </param>
         public void addElementVariable(Elemento e)
         {
             variables.Add(e);
@@ -165,6 +177,7 @@ namespace ChomskyLogic.model
         {
             productions.Remove(prod);
         }
+
         /// <summary>
         /// This method is responsible for cloning an item
         /// </summary>
