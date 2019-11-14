@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace ChomskyLogic.model
 {
+
+    ///<summary>
+    ///The chomsky class is in charge of business logic: 
+    ///conversion, location, instantiation, of a string.
+    ///</summary>
     public class Chomsky
     {
         public Gramatica grammar;
@@ -14,6 +19,9 @@ namespace ChomskyLogic.model
         private IAlgoritmo[] algorithms;
         private int step;
 
+        ///<summary>
+        ///CONSTRUCTOR
+        ///</summary>
         public Chomsky(String s)
         {
             grammar = new Gramatica();
@@ -36,6 +44,15 @@ namespace ChomskyLogic.model
             nextGrammar += algorithms[0].grammar(); 
         }
 
+        /// <summary>
+        /// This method is responsible for converting strings to terminals
+        /// </summary>
+        /// <param name="s">
+        /// String type S
+        /// </param>
+        /// <returns>
+        /// IList type listvar
+        /// </returns>
         private IList<char> convertStringToVariables(String s)
         {
             IList<char> listVar = new List<char>();
@@ -50,6 +67,10 @@ namespace ChomskyLogic.model
 
             return listVar;
         }
+        /// <summary>
+        /// This method is responsible for applying the corresponding algorithm depending on the grammar and the current step
+        /// </summary>
+
 
         public void applyAlgorithm()
         {
@@ -59,6 +80,19 @@ namespace ChomskyLogic.model
             step++;
         }
 
+        /// <summary>
+        /// This method is responsible for converting strings to terminals
+        /// </summary>
+        /// <param name="s">
+        /// String type S
+        /// </param>
+        /// <param name="var">
+        /// IList type var
+        /// </param>
+
+        /// <returns>
+        /// IList type listvar
+        /// </returns>
         private IList<char> convertStringToTerminals(String s, IList<char> var)
         {
             IList<char> listVar = new List<char>();
@@ -85,6 +119,15 @@ namespace ChomskyLogic.model
             return listVar;
         }
 
+        /// <summary>
+        /// This method is responsible for converting arrays to string
+        /// </summary>
+        /// <param name="s">
+        /// String type S
+        /// </param>
+        /// <returns>
+        /// string type aux
+        /// </returns>
         private String arrayToString(String[] s)
         {
             String aux = "";
@@ -96,6 +139,19 @@ namespace ChomskyLogic.model
             return aux;
         }
 
+        /// <summary>
+        /// This method is responsible for converting strings to terminals
+        /// </summary>
+        /// <param name="s">
+        /// String type S
+        /// </param>
+        /// <param name="var">
+        /// IList type var
+        /// </param>
+
+        /// <returns>
+        /// IList type listvar
+        /// </returns>
         private void addTotalProduction(String s)
         {
             List<string> listString = s.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
@@ -105,7 +161,12 @@ namespace ChomskyLogic.model
             }
 
         }
-
+        /// <summary>
+        /// This method is responsible for adding the production body receiving a string as a parameter
+        /// </summary>
+        /// <param name="s">
+        /// String type S
+        /// </param>
         private void addProduction(String s)
         {
             String[] pre_post = s.Split('>');
@@ -126,7 +187,15 @@ namespace ChomskyLogic.model
             grammar.productions.Add(p);
 
         }
-
+        /// <summary>
+        /// This method is responsible for finding an element of grammar from a character
+        /// </summary>
+        /// <param name="v">
+        /// char type v
+        /// </param>
+        /// <returns>
+        /// Elemento type e
+        /// </returns>
         public Elemento browseElement(char v)
         {
             Elemento e = null;
@@ -145,6 +214,13 @@ namespace ChomskyLogic.model
             return e;
         }
 
+        /// <summary>
+        /// This method is responsible for finding the grammar´s variables by adding them to the auxiliary string
+        /// </summary>
+        /// <returns>
+        /// string type aux
+        /// </returns>
+
         private String variablesGrammar()
         {
             //Console.WriteLine("In Variables");
@@ -157,6 +233,13 @@ namespace ChomskyLogic.model
             }
             return aux;
         }
+
+        /// <summary>
+        /// This method is responsible for finding the grammar´s terminals by adding them to the auxiliary string
+        /// </summary>
+        /// <returns>
+        /// string type aux
+        /// </returns>
         private String termianlesGrammar()
         {
             //Console.WriteLine("In Terminales");
@@ -170,6 +253,14 @@ namespace ChomskyLogic.model
             return aux;
         }
 
+        /// <summary>
+        /// This method is responsible for converting lists to strings
+        /// </summary>
+        /// <param name="v">
+        /// IList type v
+        /// <returns>
+        /// String type aux
+        /// </returns>
         private String listToString(IList<char> v)
         {
             String aux = "";
@@ -180,7 +271,11 @@ namespace ChomskyLogic.model
 
             return aux;
         }
-
+        /// <summary>
+        /// This method is responsible for instantiating the grammar based on the methods previously performed.
+        /// </summary>
+        /// <param name="s">
+        /// string type s
         private void InstanceGrammar(String s)
         {
             IList<char> variables = convertStringToVariables(s);
